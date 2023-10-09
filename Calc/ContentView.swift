@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    var currentNumber = 0
+    @State var currentResult = "0"
+    @State var operandToCalculate = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        HStack {
+            Text("Result: ")
+            Text("\(currentResult)")
         }
-        .padding()
+        Button {
+            if !operandToCalculate {
+                if currentResult == "0" {
+                    currentResult = ""
+                }
+                currentResult += "1"
+            }
+        } label: {
+            Text("1")
+        }
+        Button {
+            operandToCalculate.toggle()
+        } label: {
+            Text("+")
+        }
     }
 }
 
