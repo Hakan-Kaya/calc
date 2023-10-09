@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State var previousNumber = 0
     @State var currentNumber = "0"
-    @State var operandToCalculate = false
     @State var enteringNewNumber = true
+    @State var calculate = ""
     
     var body: some View {
         HStack {
@@ -23,27 +23,27 @@ struct ContentView: View {
         
         VStack {
             HStack {
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "1")
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "2")
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "3")
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "4")
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "5")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "1")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "2")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "3")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "4")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "5")
             }
         
             HStack {
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "6")
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "7")
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "8")
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "9")
-                NumberButton(currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonValue: "0")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "6")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "7")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "8")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "9")
+                NumberButton(currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonValue: "0")
             }
             
             HStack {
-                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonOperand: "+")
-                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonOperand: "-")
-                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonOperand: "*")
-                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonOperand: "/")
-                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, operandToCalculate: $operandToCalculate, enteringNewNumber: $enteringNewNumber, buttonOperand: "=")
+                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonOperand: "+", calculate: $calculate)
+                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonOperand: "-", calculate: $calculate)
+                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonOperand: "*", calculate: $calculate)
+                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonOperand: "/", calculate: $calculate)
+                OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, enteringNewNumber: $enteringNewNumber, buttonOperand: "=", calculate: $calculate)
             }
         }
     }

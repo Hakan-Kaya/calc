@@ -10,17 +10,17 @@ import SwiftUI
 struct OperandButton: View {
     @Binding var previousNumber: Int
     @Binding var currentNumber: String
-    @Binding var operandToCalculate: Bool
     @Binding  var enteringNewNumber: Bool
     let buttonOperand: String
+    @Binding var calculate: String
     
     var body: some View {
         Button {
-            if !operandToCalculate {
+            if calculate == "" {
+                calculate = buttonOperand
                 previousNumber = Int(currentNumber) ?? 0
-                operandToCalculate = true
             } else {
-                switch buttonOperand {
+                switch calculate {
                 case "+":
                     previousNumber += Int(currentNumber) ?? 0
                 case "-":
@@ -33,7 +33,7 @@ struct OperandButton: View {
                     print("Something is definitely wrong")
                 }
                 currentNumber = String(previousNumber)
-                operandToCalculate = false
+                calculate = buttonOperand
             }
             enteringNewNumber = true
         } label: {

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NumberButton: View {
     @Binding var currentNumber: String
-    @Binding var operandToCalculate: Bool
     @Binding var enteringNewNumber: Bool
     let buttonValue: String
     
