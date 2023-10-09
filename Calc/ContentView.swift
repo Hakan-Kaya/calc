@@ -17,27 +17,10 @@ struct ContentView: View {
             Text("Result: ")
             Text("\(currentNumber)")
         }
-        Button {
-            if currentNumber == "0" {
-                currentNumber = ""
-            }
-            currentNumber += "1"
-        } label: {
-            Text("1")
-        }
-        Button {
-            if !operandToCalculate {
-                previousNumber = Int(currentNumber) ?? 0
-                currentNumber = "0"
-                operandToCalculate.toggle()
-            } else {
-                previousNumber += Int(currentNumber) ?? 0
-                currentNumber = String(previousNumber)
-                operandToCalculate.toggle()
-            }
-        } label: {
-            Text("+")
-        }
+        
+        NumberButton(currentNumber: $currentNumber)
+        
+        OperandButton(previousNumber: $previousNumber, currentNumber: $currentNumber, operandToCalculate: $operandToCalculate)
     }
 }
 
