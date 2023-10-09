@@ -11,23 +11,36 @@ struct OperandButton: View {
     @Binding var previousNumber: Int
     @Binding var currentNumber: String
     @Binding var operandToCalculate: Bool
+    @Binding  var enteringNewNumber: Bool
+    let buttonOperand: String
     
     var body: some View {
         Button {
             if !operandToCalculate {
                 previousNumber = Int(currentNumber) ?? 0
-                operandToCalculate.toggle()
+                operandToCalculate = true
             } else {
-                previousNumber += Int(currentNumber) ?? 0
+                switch buttonOperand {
+                case "+":
+                    previousNumber += Int(currentNumber) ?? 0
+                case "-":
+                    previousNumber -= Int(currentNumber) ?? 0
+                case "*":
+                    previousNumber *= Int(currentNumber) ?? 0
+                case "/":
+                    previousNumber /= Int(currentNumber) ?? 0
+                default:
+                    print("Something is definitely wrong")
+                }
                 currentNumber = String(previousNumber)
-                operandToCalculate.toggle()
+                operandToCalculate = false
             }
+            enteringNewNumber = true
         } label: {
-            Text("+")
+            Text(buttonOperand)
+                .bold()
+                .padding()
+                .border(.blue)
         }
     }
 }
-
-//#Preview {
-//    OperandButton(previousNumber: 0, currentNumber: "0", operandToCalculate: false)
-//}

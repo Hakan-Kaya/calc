@@ -9,19 +9,22 @@ import SwiftUI
 
 struct NumberButton: View {
     @Binding var currentNumber: String
+    @Binding var operandToCalculate: Bool
+    @Binding var enteringNewNumber: Bool
+    let buttonValue: String
     
     var body: some View {
         Button {
-            if currentNumber == "0" {
+            if currentNumber == "0" || enteringNewNumber {
                 currentNumber = ""
+                enteringNewNumber = false
             }
-            currentNumber += "1"
+            currentNumber += "\(buttonValue)"
         } label: {
-            Text("1")
+            Text("\(buttonValue)")
+                .bold()
+                .padding()
+                .border(.blue)
         }
     }
 }
-
-//#Preview {
-//    NumberButton(currentNumber: "1")
-//}
