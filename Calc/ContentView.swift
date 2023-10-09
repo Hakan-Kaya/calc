@@ -8,27 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
-    var currentNumber = 0
-    @State var currentResult = "0"
+    @State var previousNumber = 0
+    @State var currentNumber = "0"
     @State var operandToCalculate = false
     
     var body: some View {
         HStack {
             Text("Result: ")
-            Text("\(currentResult)")
+            Text("\(currentNumber)")
         }
         Button {
-            if !operandToCalculate {
-                if currentResult == "0" {
-                    currentResult = ""
-                }
-                currentResult += "1"
+            if currentNumber == "0" {
+                currentNumber = ""
             }
+            currentNumber += "1"
         } label: {
             Text("1")
         }
         Button {
-            operandToCalculate.toggle()
+            if !operandToCalculate {
+                previousNumber = Int(currentNumber) ?? 0
+                currentNumber = "0"
+                operandToCalculate.toggle()
+            } else {
+                previousNumber += Int(currentNumber) ?? 0
+                currentNumber = String(previousNumber)
+                operandToCalculate.toggle()
+            }
         } label: {
             Text("+")
         }
