@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OperandButton: View {
-    @Binding var previousNumber: Int
+    @Binding var previousNumber: Double
     @Binding var currentNumber: String
     @Binding  var enteringNewNumber: Bool
     let buttonOperand: String
@@ -18,17 +18,17 @@ struct OperandButton: View {
         Button {
             if calculate == "" {
                 calculate = buttonOperand
-                previousNumber = Int(currentNumber) ?? 0
+                previousNumber = Double(currentNumber) ?? 0
             } else {
                 switch calculate {
                 case "+":
-                    previousNumber += Int(currentNumber) ?? 0
+                    previousNumber += Double(currentNumber) ?? 0
                 case "-":
-                    previousNumber -= Int(currentNumber) ?? 0
+                    previousNumber -= Double(currentNumber) ?? 0
                 case "*":
-                    previousNumber *= Int(currentNumber) ?? 0
+                    previousNumber *= Double(currentNumber) ?? 0
                 case "/":
-                    previousNumber /= Int(currentNumber) ?? 0
+                    previousNumber /= Double(currentNumber) ?? 0
                 default:
                     print("Something is definitely wrong")
                 }

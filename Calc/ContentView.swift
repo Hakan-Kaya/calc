@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var previousNumber = 0
+    @State var previousNumber = 0.0
     @State var currentNumber = "0"
     @State var enteringNewNumber = true
     @State var calculate = ""
